@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
 
         float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.AngleAxis(angle, new Vector3(0,0,1));
+        transform.rotation = Quaternion.AngleAxis(angle, new Vector3(0,0,1)) ;
     }
 
 }
