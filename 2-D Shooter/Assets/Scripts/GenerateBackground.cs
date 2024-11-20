@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,45 @@ using UnityEngine;
 public class GenerateBackground : MonoBehaviour
 {
     [SerializeField] private Transform backgroundImage;
-    private List<Transform> backgroundSprites;
 
-    void Start()
+    private const float maxViewDistance = 900;
+    int chunckSize;
+    int chuncksVisibleInViewDist;
+
+    private Dictionary<Vector2, Transform> backgroundSprites = new Dictionary<Vector2, Transform>();
+
+    private void Start()
     {
-        //for(int i = 0; i < 9; i++)
-       
-        backgroundSprites.Add(Instantiate<Transform>(backgroundImage, Player.instance.transform.position + new Vector3(0, 0, 1), Quaternion.identity));
-       // backgroundSprites.Add(Instantiate<Sprite>(backgroundImage, Player.instance.transform.position + backgroundImage., Quaternion.identity));
-        //backgroundSprites.Add(Instantiate<Sprite>(backgroundImage, Player.instance.transform.position, Quaternion.identity));
-        //backgroundSprites.Add(Instantiate<Sprite>(backgroundImage, Player.instance.transform.position, Quaternion.identity));
-        //backgroundSprites.Add(Instantiate<Sprite>(backgroundImage, Player.instance.transform.position, Quaternion.identity));
+        chunckSize = 500;
+        chuncksVisibleInViewDist = Mathf.RoundToInt(maxViewDistance / chunckSize);
     }
 
-    
-    void Update()
+    private void Update()
     {
-        
+        UpdateVisibleChuck();
+    }
+
+    private void UpdateVisibleChuck()
+    {
+        int currentChunckCoordX = Mathf.RoundToInt(Player.instance.transform.position.x / chunckSize);
+        int currentChunckCoordY = Mathf.RoundToInt(Player.instance.transform.position.y / chunckSize);
+
+        for(int yOffset = -chuncksVisibleInViewDist; yOffset <= chuncksVisibleInViewDist; yOffset++)
+        {
+            for(int xOffset = -chuncksVisibleInViewDist; xOffset <= chuncksVisibleInViewDist; xOffset++)
+            {
+                Vector2 viewedChunckCoord = new Vector2(currentChunckCoordX + xOffset, currentChunckCoordY + yOffset);
+
+                if(backgroundSprites.ContainsKey(viewedChunckCoord))
+                {
+                    //
+                }
+                else
+                {
+                    Transform back = Instantiate<Transform>(backgroundImage, viewedChunckCoord, Quaternion.identity);
+                    backgroundSprites.Add(viewedChunckCoord, back);
+                }
+            }
+        }
     }
 }
