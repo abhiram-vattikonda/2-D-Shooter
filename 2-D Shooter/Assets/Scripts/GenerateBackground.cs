@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GenerateBackground : MonoBehaviour
@@ -12,6 +13,7 @@ public class GenerateBackground : MonoBehaviour
     int chuncksVisibleInViewDist;
 
     private Dictionary<Vector2, Transform> backgroundSprites = new Dictionary<Vector2, Transform>();
+    private List<Transform> activeBackgroundsLastRun = new List<Transform>();
 
     private void Start()
     {
@@ -26,6 +28,12 @@ public class GenerateBackground : MonoBehaviour
 
     private void UpdateVisibleChuck()
     {
+        for(int i = 0; i < activeBackgroundsLastRun.Count; i++)
+        {
+            activeBackgroundsLastRun[i].GetComponent<SpriteRenderer>().enabled = false;
+        }
+        activeBackgroundsLastRun.Clear();
+
         int currentChunckCoordX = Mathf.RoundToInt(Player.instance.transform.position.x / chunckSize);
         int currentChunckCoordY = Mathf.RoundToInt(Player.instance.transform.position.y / chunckSize);
 
@@ -37,12 +45,14 @@ public class GenerateBackground : MonoBehaviour
 
                 if(backgroundSprites.ContainsKey(viewedChunckCoord))
                 {
-                    //
+                    backgroundSprites[viewedChunckCoord].GetComponent<SpriteRenderer>().enabled = true;
+                    activeBackgroundsLastRun.Add(backgroundSprites[viewedChunckCoord]);
                 }
                 else
                 {
                     Transform back = Instantiate<Transform>(backgroundImage, viewedChunckCoord * chunckSize, Quaternion.identity); // got the 10 throught triel and error
                     backgroundSprites.Add(viewedChunckCoord, back);
+                    activeBackgroundsLastRun.Add(back);
                 }
             }
         }
