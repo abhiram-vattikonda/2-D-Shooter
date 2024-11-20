@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class EnemyWalker : MonoBehaviour
 {
-    private float speed = 400f;
+    private float speed = 200f;
     private float rotationSpeed = 0.06f;
     private float health = 30f;
+    public float damage = 10f;
 
 
     private Rigidbody2D rb;
@@ -46,7 +47,14 @@ public class EnemyWalker : MonoBehaviour
     {
         if (collision.collider.TryGetComponent<Bullet>(out Bullet bullet))
         {
-            Destroy(this.gameObject);
+            health -= bullet.damage;
         }
+    }
+
+    public void PlayerKnockBack()
+    {
+        int knockback = 100;
+        Vector2 force = (transform.position - Player.instance.transform.position).normalized * knockback;
+        rb.AddForce(force, ForceMode2D.Impulse);
     }
 }

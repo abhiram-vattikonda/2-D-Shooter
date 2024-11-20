@@ -155,6 +155,7 @@ MonoBehaviour:
   bulletSpawnPostion: {fileID: 1580494255}
   bulletPrefab: {fileID: 3574005955951074328, guid: 8089c01f0ed45ac4b86e88fb37a11571, type: 3}
   gameInput: {fileID: 635618160}
+  health: 100
 --- !u!58 &58907922
 CircleCollider2D:
   m_ObjectHideFlags: 0

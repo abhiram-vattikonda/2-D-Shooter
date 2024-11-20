@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInput gameInput;
 
 
-    private float health = 100f;
+    public float health = 100f;
 
 
     private void Awake()
@@ -40,6 +41,12 @@ public class Player : MonoBehaviour
     {
         PlayerMovement();
         PlayerShootDirection();
+
+        if (health <= 0)
+        {
+            Destroy(Player.instance);
+        }
+            
     }
 
     private void PlayerMovement()
@@ -63,4 +70,13 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, new Vector3(0,0,1)) ;
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.TryGetComponent<EnemyWalker>(out EnemyWalker walker))
+        {
+            health -= walker.damage;
+            walker.PlayerKnockBack(); // Should work but not working
+        }
+    }
 }
