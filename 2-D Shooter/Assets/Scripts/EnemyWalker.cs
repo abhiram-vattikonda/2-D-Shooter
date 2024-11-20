@@ -8,7 +8,6 @@ public class EnemyWalker : MonoBehaviour
     private float speed = 400f;
     private float rotationSpeed = 0.06f;
     private float health = 30f;
-    private float damageAmount = 10f;
 
 
     private Rigidbody2D rb;
@@ -25,6 +24,9 @@ public class EnemyWalker : MonoBehaviour
     private void Update()
     {
         RotateTowardPlayer();
+        if (health <= 0)
+            Destroy(this.gameObject);
+
     }
     void FixedUpdate()
     {
