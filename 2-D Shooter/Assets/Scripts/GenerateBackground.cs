@@ -7,7 +7,7 @@ public class GenerateBackground : MonoBehaviour
 {
     [SerializeField] private Transform backgroundImage;
 
-    private const float maxViewDistance = 900;
+    private const float maxViewDistance = 10;
     int chunckSize;
     int chuncksVisibleInViewDist;
 
@@ -15,7 +15,7 @@ public class GenerateBackground : MonoBehaviour
 
     private void Start()
     {
-        chunckSize = 500;
+        chunckSize = 10;
         chuncksVisibleInViewDist = Mathf.RoundToInt(maxViewDistance / chunckSize);
     }
 
@@ -41,7 +41,7 @@ public class GenerateBackground : MonoBehaviour
                 }
                 else
                 {
-                    Transform back = Instantiate<Transform>(backgroundImage, viewedChunckCoord, Quaternion.identity);
+                    Transform back = Instantiate<Transform>(backgroundImage, viewedChunckCoord * chunckSize, Quaternion.identity); // got the 10 throught triel and error
                     backgroundSprites.Add(viewedChunckCoord, back);
                 }
             }
