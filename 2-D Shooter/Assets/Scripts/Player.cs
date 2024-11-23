@@ -15,9 +15,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform bulletSpawnPostion;
     [SerializeField] private Transform bulletPrefab;
     [SerializeField] private GameInput gameInput;
+    [SerializeField] private HealthBar healthBar;
 
-
-    public float health = 100f;
+    private float maxHealth = 100f;
+    private float health;
 
 
     private void Awake()
@@ -30,6 +31,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         gameInput.OnBulletButtonPressed += Player_OnBulletButtonPressed;
+        healthBar.SetMaxHealth(maxHealth);
+        health = maxHealth;
     }
 
     private void Player_OnBulletButtonPressed(object sender, EventArgs e)
@@ -77,6 +80,7 @@ public class Player : MonoBehaviour
         {
             health -= walker.damage;
             walker.PlayerKnockBack(); // Should work but not working
+            healthBar.UpdateHealth(health);
         }
     }
 }
