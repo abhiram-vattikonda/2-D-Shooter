@@ -5,20 +5,30 @@ using UnityEngine.UI;
 
 public class ExpBar : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
+    static public Slider slider;
 
     private void Start()
     {
+        slider = GetComponent<Slider>();
         SetMaxExp(100);
     }
 
-    public void SetMaxExp(float maxExp)
+    private void Update()
+    {
+        if (slider.value == slider.maxValue)
+        {
+            Debug.Log("EXP MAX");
+            SetMaxExp(slider.maxValue * 2);
+        }
+    }
+
+    static public void SetMaxExp(float maxExp)
     {
         slider.maxValue = maxExp;
         slider.value = 0;
     }
 
-    public void UpdateExp(float exp)
+    static public void UpdateExp(float exp)
     {
         slider.value += exp;
     }
