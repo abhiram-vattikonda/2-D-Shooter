@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
 
     private void Player_OnBulletButtonPressed(object sender, EventArgs e)
     {
-        Transform bulletInstance = Instantiate(bulletPrefab, bulletSpawnPostion.position, transform.rotation);  
+        Transform bulletInstance = Instantiate(bulletPrefab, bulletSpawnPostion.position, transform.rotation);
     }
 
     private void Update()
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         {
             Destroy(Player.instance);
         }
-            
+
     }
 
     private void PlayerMovement()
@@ -70,17 +70,20 @@ public class Player : MonoBehaviour
 
         float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.AngleAxis(angle, new Vector3(0,0,1)) ;
+        transform.rotation = Quaternion.AngleAxis(angle, new Vector3(0, 0, 1));
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(collision.gameObject.name);
         if (collision.collider.TryGetComponent<EnemyWalker>(out EnemyWalker walker))
         {
             health -= walker.damage;
             walker.PlayerKnockBack(); // Should work but not working
             healthBar.UpdateHealth(health);
         }
+
     }
 }
+

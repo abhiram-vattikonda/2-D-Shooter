@@ -13,6 +13,7 @@ public class EnemyWalker : MonoBehaviour
 
     private Rigidbody2D rb;
     [SerializeField] private Transform tip;
+    [SerializeField] private Experience exp;
 
 
 
@@ -26,7 +27,10 @@ public class EnemyWalker : MonoBehaviour
     {
         RotateTowardPlayer();
         if (health <= 0)
+        {
+            Instantiate<Experience>(exp, transform.position + new Vector3(0,0,0.1f), Quaternion.identity);
             Destroy(this.gameObject);
+        }
 
     }
     void FixedUpdate()

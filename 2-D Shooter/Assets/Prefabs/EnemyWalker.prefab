@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   tip: {fileID: 2833590932446394478}
+  exp: {fileID: 4405904158269333530, guid: 383bb7f2b458388488acffc3d2edbcca, type: 3}
 --- !u!50 &3778855337413374946
 Rigidbody2D:
   serializedVersion: 4
