@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private HealthBar healthBar;
 
+
+    public float playerSpeed = 5.0f;
     private float maxHealth = 100f;
     private float health;
 
@@ -55,8 +57,6 @@ public class Player : MonoBehaviour
     private void PlayerMovement()
     {
         Vector2 inputVector = gameInput.GetMovementInput();
-
-        float playerSpeed = 5.0f;
 
         transform.position += new Vector3(inputVector.x * Time.deltaTime * playerSpeed, inputVector.y * Time.deltaTime * playerSpeed, 0);
     }

@@ -11,7 +11,7 @@ public class GameInput : MonoBehaviour
     private PlayerInputActions playerInputActions;
 
     private float fireTimer;
-    private float fireRate = 0.5f;
+    public static float fireRate = 0.5f;
 
 
     private void Start()

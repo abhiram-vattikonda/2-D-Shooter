@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ExpBar : MonoBehaviour
 {
+    [SerializeField] private PowerManager powerManager;
+
     static public Slider slider;
 
     private void Start()
@@ -19,6 +21,8 @@ public class ExpBar : MonoBehaviour
         {
             Debug.Log("EXP MAX");
             SetMaxExp(slider.maxValue * 2);
+            powerManager.PowerUpsMenu();
+
         }
     }
 
