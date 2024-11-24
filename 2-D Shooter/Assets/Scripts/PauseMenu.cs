@@ -7,12 +7,12 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
 
-    public void Pause()
+    public static void Pause()
     {
         isPaused = true;
         Time.timeScale = 0f;
     }
-    public void Resume()
+    public static void Resume()
     {
         isPaused = false;
         Time.timeScale = 1f;
@@ -21,5 +21,10 @@ public class PauseMenu : MonoBehaviour
     public void GotoMainMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void ReplayGame()
+    {
+        SceneManager.LoadScene("Game");
     }
 }

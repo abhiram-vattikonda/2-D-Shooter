@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform bulletPrefab;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private GameObject tryAgainMenu;
 
 
     public float playerSpeed = 5.0f;
@@ -49,7 +50,8 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(Player.instance);
+            PauseMenu.Pause();
+            tryAgainMenu.SetActive(true);
         }
 
     }
