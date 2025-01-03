@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-[CreateAssetMenu]
+
 public class Powerup : MonoBehaviour
 {
-    private upgrade[] upgrades = new upgrade[]
+    public static upgrade[] upgrades = new upgrade[]
     {
         new upgrade {name= "Damage and fire rate", descriptions= new string[]{"Increase damage: +50%\nIncrease Fire rate: +50%", "Increase damage: +75%\nIncrease Fire rate: +50%", "Increase damage: +100%\nIncrease Fire rate: +50%"}},
         new upgrade {name= "Movement Speed", descriptions= new string[]{"Increase speed: +30%", "Increase speed: +40%", "Increase speed: +50%"}},
@@ -15,29 +15,32 @@ public class Powerup : MonoBehaviour
         new upgrade {name= "Regeneration", descriptions= new string[]{"Increase health: +1 hp/s", "Increase Regenration rate: +50%", "Increase Regeneration rate: +100%"}},
     };
 
-    public void ChoosePowerUps()
+    public static upgrade[] ChoosePowerUps()
     {
         reshuffle(upgrades);
         upgrade power1 = upgrades[0];
         upgrade power2 = upgrades[1];
         upgrade power3 = upgrades[2];
+
+        return new upgrade[] { power1, power2, power3 };
     }
 
-    void reshuffle(upgrade[] texts)
+    public static void reshuffle(upgrade[] texts)
     {
-        for (int t = 0; t < texts.Length; t++)
+        for(int t = 0; t < texts.Length; t++)
         {
-            upgrade tmp = texts[t];
-            int r = Random.Range(t, texts.Length);
-            texts[t] = texts[r];
-            texts[r] = tmp;
+           upgrade tmp = texts[t];
+           int r = Random.Range(t, texts.Length);
+           texts[t] = texts[r];
+           texts[r] = tmp;
         }
     }
 
 
+
     public class upgrade
     {
-        public bool[] stages = { false };
+        public int stages = 0;
         public string name { get; set; }
         public string[] descriptions {  get; set; }
 
