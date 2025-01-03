@@ -7,7 +7,7 @@ public class EnemyWalker : MonoBehaviour
 {
     private float speed = 200f;
     private float rotationSpeed = 0.06f;
-    private float health = 30f;
+    private float health = 20f;
     public float damage = 10f;
 
 

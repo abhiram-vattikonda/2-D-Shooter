@@ -11,7 +11,7 @@ public class GameInput : MonoBehaviour
     private PlayerInputActions playerInputActions;
 
     private float fireTimer;
-    public static float fireRate = 0.5f;
+    [SerializeField] public static float fireRate = 0.6f;
 
 
     private void Start()
