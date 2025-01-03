@@ -4,8 +4,9 @@ using System.Security.Cryptography;
 using UnityEngine;
 
 
-public class Powerup : MonoBehaviour
+public class Powerup
 {
+
     public static upgrade[] upgrades = new upgrade[]
     {
         new upgrade {name= "Damage and fire rate", descriptions= new string[]{"Increase damage: +50%\nIncrease Fire rate: +50%", "Increase damage: +75%\nIncrease Fire rate: +50%", "Increase damage: +100%\nIncrease Fire rate: +50%"}},
@@ -15,8 +16,13 @@ public class Powerup : MonoBehaviour
         new upgrade {name= "Regeneration", descriptions= new string[]{"Increase health: +1 hp/s", "Increase Regenration rate: +50%", "Increase Regeneration rate: +100%"}},
     };
 
-    public static upgrade[] ChoosePowerUps()
+    public upgrade[] ChoosePowerUps()
     {
+        List<upgrade> availableUpgrades = new List<upgrade> { };
+        foreach (upgrade upgrade in upgrades)
+        {
+            availableUpgrades.Add(upgrade);
+        }
         reshuffle(upgrades);
         upgrade power1 = upgrades[0];
         upgrade power2 = upgrades[1];
@@ -25,7 +31,15 @@ public class Powerup : MonoBehaviour
         return new upgrade[] { power1, power2, power3 };
     }
 
-    public static void reshuffle(upgrade[] texts)
+
+    public void UpgradeChosen(string powerName)
+    {
+        Debug.Log(powerName);
+        PauseMenu.Resume();
+        PowerManager.instance.powerMenu.SetActive(false);
+    }
+
+    public void reshuffle(upgrade[] texts)
     {
         for(int t = 0; t < texts.Length; t++)
         {

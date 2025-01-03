@@ -596,7 +596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &385462509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2050,7 +2050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113d29d1b09989545b1dd37895bef881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerMenu: {fileID: 385462508}
   button0: {fileID: 365712663}
   button1: {fileID: 985510382}
   button2: {fileID: 487093118}
@@ -3799,6 +3798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776d5ec54faf8b94cbc55cb3c86e194c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerMenu: {fileID: 0}
 --- !u!1 &2122235794
 GameObject:
   m_ObjectHideFlags: 0
