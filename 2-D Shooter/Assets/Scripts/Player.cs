@@ -19,8 +19,10 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject tryAgainMenu;
 
 
-    public float playerSpeed = 5.0f;
-    public float maxHealth = 100f;
+    private float playerSpeed = 5.0f;
+    public float currentPlayerSpeed;
+    private float maxHealth = 100f;
+    public float currentMaxHealth;
     public float health;
 
 
@@ -36,6 +38,9 @@ public class Player : MonoBehaviour
         gameInput.OnBulletButtonPressed += Player_OnBulletButtonPressed;
         healthBar.SetFullHealth(maxHealth);
         health = maxHealth;
+        currentMaxHealth = maxHealth;
+        currentPlayerSpeed = playerSpeed;
+        transform.localScale = Vector3.one;
     }
 
     private void Player_OnBulletButtonPressed(object sender, EventArgs e)
@@ -61,7 +66,7 @@ public class Player : MonoBehaviour
     {
         Vector2 inputVector = gameInput.GetMovementInput();
 
-        transform.position += new Vector3(inputVector.x * Time.deltaTime * playerSpeed, inputVector.y * Time.deltaTime * playerSpeed, 0);
+        transform.position += new Vector3(inputVector.x * Time.deltaTime * currentPlayerSpeed, inputVector.y * Time.deltaTime * currentPlayerSpeed, 0);
     }
 
     private void PlayerShootDirection()

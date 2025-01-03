@@ -8,18 +8,18 @@ public class PowerUpImplementations
     {
         if (stage == 0)
         {
-            Bullet.damage *= 1.5f;
-            GameInput.fireRate /= 1.5f;
+            Bullet.currentDamage *= 1.5f;
+            GameInput.currentFirerate /= 1.5f;
         }
         else if (stage == 1)
         {
-            Bullet.damage *= 1.75f;
-            GameInput.fireRate /= 1.5f;
+            Bullet.currentDamage *= 1.75f;
+            GameInput.currentFirerate /= 1.5f;
         }
         else if (stage == 2)
         {
-            Bullet.damage *= 2;
-            GameInput.fireRate /= 1.5f;
+            Bullet.currentDamage *= 2;
+            GameInput.currentFirerate /= 1.5f;
         }
 
         Debug.Log("dandf player");
@@ -30,15 +30,15 @@ public class PowerUpImplementations
     {
         if (stage == 0)
         {
-            Player.instance.playerSpeed *= 1.3f;
+            Player.instance.currentPlayerSpeed *= 1.3f;
         }
         else if (stage == 1)
         {
-            Player.instance.playerSpeed *= 1.4f;
+            Player.instance.currentPlayerSpeed *= 1.4f;
         }
         else if (stage == 2)
         {
-            Player.instance.playerSpeed *= 1.5f;
+            Player.instance.currentPlayerSpeed *= 1.5f;
         }
 
         Debug.Log("speed played");
@@ -47,31 +47,31 @@ public class PowerUpImplementations
 
     public void Increase_Size(int stage)
     {
-        float currentHealthPercent = (Player.instance.health / Player.instance.maxHealth) * 100;
+        float currentHealthPercent = (Player.instance.health / Player.instance.currentMaxHealth) * 100;
         if (stage == 0)
         {
             Player.instance.transform.localScale *= 1.15f;
-            Player.instance.maxHealth *= 1.5f;
-            Player.instance.healthBar.SetMaxHealth(Player.instance.maxHealth);
-            Player.instance.healthBar.UpdateHealth(Player.instance.maxHealth * (currentHealthPercent / 100));
-            Player.instance.playerSpeed *= 0.75f;
+            Player.instance.currentMaxHealth *= 1.5f;
+            Player.instance.healthBar.SetMaxHealth(Player.instance.currentMaxHealth);
+            Player.instance.healthBar.UpdateHealth(Player.instance.currentMaxHealth * (currentHealthPercent / 100));
+            Player.instance.currentPlayerSpeed *= 0.75f;
         }
         else if (stage == 1)
         {
             Player.instance.transform.localScale *= 1.30f;
-            Player.instance.maxHealth *= 1.75f;
-            Player.instance.healthBar.SetMaxHealth(Player.instance.maxHealth);
-            Player.instance.healthBar.UpdateHealth(Player.instance.maxHealth * (currentHealthPercent / 100));
-            Player.instance.playerSpeed *= 0.75f;
+            Player.instance.currentMaxHealth *= 1.75f;
+            Player.instance.healthBar.SetMaxHealth(Player.instance.currentMaxHealth);
+            Player.instance.healthBar.UpdateHealth(Player.instance.currentMaxHealth * (currentHealthPercent / 100));
+            Player.instance.currentPlayerSpeed *= 0.75f;
 
         }
         else if (stage == 2)
         {
             Player.instance.transform.localScale *= 1.45f;
-            Player.instance.maxHealth *= 2f;
-            Player.instance.healthBar.SetMaxHealth(Player.instance.maxHealth);
-            Player.instance.healthBar.UpdateHealth(Player.instance.maxHealth * (currentHealthPercent/100));
-            Player.instance.playerSpeed *= 0.75f;
+            Player.instance.currentMaxHealth *= 2f;
+            Player.instance.healthBar.SetMaxHealth(Player.instance.currentMaxHealth);
+            Player.instance.healthBar.UpdateHealth(Player.instance.currentMaxHealth * (currentHealthPercent/100));
+            Player.instance.currentPlayerSpeed *= 0.75f;
         }
         Debug.Log("size played");
     }

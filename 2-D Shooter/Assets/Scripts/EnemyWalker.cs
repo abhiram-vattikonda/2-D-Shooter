@@ -51,7 +51,7 @@ public class EnemyWalker : MonoBehaviour
     {
         if (collision.collider.TryGetComponent<Bullet>(out Bullet bullet))
         {
-            health -= Bullet.damage;
+            health -= Bullet.currentDamage;
         }
     }
 

@@ -11,14 +11,15 @@ public class GameInput : MonoBehaviour
     private PlayerInputActions playerInputActions;
 
     private float fireTimer;
-    [SerializeField] public static float fireRate = 0.6f;
+    private float firerate = 0.6f;
+    [SerializeField] public static float currentFirerate;
 
 
     private void Start()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
-
+        currentFirerate = firerate;
         
     }
 
@@ -27,7 +28,7 @@ public class GameInput : MonoBehaviour
         if (playerInputActions.Player.Shoot.IsPressed() && fireTimer <= 0f)
         {
             OnBulletButtonPressed?.Invoke(this, new EventArgs());
-            fireTimer = fireRate;
+            fireTimer = currentFirerate;
         }
         else
         {
