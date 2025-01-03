@@ -20,7 +20,7 @@ public class ExpBar : MonoBehaviour
         if (slider.value == slider.maxValue)
         {
             Debug.Log("EXP MAX");
-            SetMaxExp(slider.maxValue * 2);
+            SetMaxExp(slider.maxValue + 100);
             powerManager.PowerUpsMenu();
 
         }

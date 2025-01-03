@@ -15,13 +15,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform bulletSpawnPostion;
     [SerializeField] private Transform bulletPrefab;
     [SerializeField] private GameInput gameInput;
-    [SerializeField] private HealthBar healthBar;
+    [SerializeField] public HealthBar healthBar;
     [SerializeField] private GameObject tryAgainMenu;
 
 
     public float playerSpeed = 5.0f;
-    private float maxHealth = 100f;
-    private float health;
+    public float maxHealth = 100f;
+    public float health;
 
 
     private void Awake()
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         gameInput.OnBulletButtonPressed += Player_OnBulletButtonPressed;
-        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetFullHealth(maxHealth);
         health = maxHealth;
     }
 
@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
         }
 
     }
+
 
     private void PlayerMovement()
     {
@@ -78,7 +79,6 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.name);
         if (collision.collider.TryGetComponent<EnemyWalker>(out EnemyWalker walker))
         {
             health -= walker.damage;
