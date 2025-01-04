@@ -22,7 +22,7 @@ public class Powerup
         foreach (upgrade upgrade in upgrades)
         {
             if (upgrade.stages < 3)
-                availableUpgrades.Add(upgrade);
+            { availableUpgrades.Add(upgrade); }
         }
         ReShuffle(availableUpgrades);
         upgrade power1 = availableUpgrades[0];
@@ -37,40 +37,39 @@ public class Powerup
     {
         PowerUpImplementations p = new PowerUpImplementations();
 
+
         PowerManager.buttonNotClicked = false;
-        Debug.Log(power.name + " Clicked");
+        Debug.Log(power.name + " Clicked " + power.stages);
+
         if (power.name == "Damage and fire rate")
         {
             p.Damage_Fire_implement(power.stages);
         }
-        else if (power.name == "Movement Speed")
+        if (power.name == "Movement Speed")
         {
             p.Movement_Speed(power.stages);
         }
-        else if (power.name == "Increase Size")
+        if (power.name == "Increase Size")
         {
             p.Increase_Size(power.stages);
         }
-        else if (power.name == "Razor")
+        if (power.name == "Razor")
         {
             p.Razor(power.stages);
         }
-        else if (power.name == "Regeneration")
+        if (power.name == "Regeneration")
         {
             p.Regen(power.stages);
         }
-        else
-        {
-        }
 
-        power.stages++;
+        foreach (upgrade upgrade in upgrades)
+        { if (upgrade.name == power.name) upgrade.stages++; }
 
         PauseMenu.Resume();
-        PowerManager.instance.powerMenu.SetActive(false);
     }
 
 
-    public void ReShuffle<T>(IList<T> ts)
+    public void ReShuffle<T>(List<T> ts)
     {
         var count = ts.Count;
         var last = count - 1;
@@ -90,7 +89,6 @@ public class Powerup
         public int stages = 0;
         public string name { get; set; }
         public string[] descriptions {  get; set; }
-
     }
     
 }

@@ -22,7 +22,6 @@ public class PowerUpImplementations
             GameInput.currentFirerate /= 1.5f;
         }
 
-        Debug.Log("dandf player");
     }
 
 
@@ -41,7 +40,6 @@ public class PowerUpImplementations
             Player.instance.currentPlayerSpeed *= 1.5f;
         }
 
-        Debug.Log("speed played");
     }
 
 
@@ -73,7 +71,6 @@ public class PowerUpImplementations
             Player.instance.healthBar.UpdateHealth(Player.instance.currentMaxHealth * (currentHealthPercent/100));
             Player.instance.currentPlayerSpeed *= 0.75f;
         }
-        Debug.Log("size played");
     }
 
     public void Razor(int stage)
@@ -90,15 +87,13 @@ public class PowerUpImplementations
         {
 
         }
-
-        Debug.Log("Razor played");
     }
 
     public void Regen(int stage)
     {
         if (stage == 0)
         {
-
+            
         }
         else if (stage == 1)
         {
@@ -108,8 +103,6 @@ public class PowerUpImplementations
         {
 
         }
-
-        Debug.Log("Regn played");
     }
 
 }

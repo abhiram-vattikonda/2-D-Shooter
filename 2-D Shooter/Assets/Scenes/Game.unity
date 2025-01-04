@@ -157,8 +157,8 @@ MonoBehaviour:
   gameInput: {fileID: 635618160}
   healthBar: {fileID: 1940831417}
   tryAgainMenu: {fileID: 1896278967}
-  playerSpeed: 5
-  maxHealth: 100
+  currentPlayerSpeed: 0
+  currentMaxHealth: 0
   health: 0
 --- !u!4 &58907923
 Transform:

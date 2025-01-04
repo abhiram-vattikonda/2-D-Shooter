@@ -8,7 +8,7 @@ public class GenerateBackground : MonoBehaviour
 {
     [SerializeField] private Transform backgroundImage;
 
-    private const float maxViewDistance = 10;
+    private const float maxViewDistance = 15;
     int chunckSize;
     int chuncksVisibleInViewDist;
 
