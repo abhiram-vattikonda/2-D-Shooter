@@ -46,6 +46,9 @@ public class Player : MonoBehaviour
     private void Player_OnBulletButtonPressed(object sender, EventArgs e)
     {
         Transform bulletInstance = Instantiate(bulletPrefab, bulletSpawnPostion.position, transform.rotation);
+        bulletInstance.GetComponent<Bullet>().SetDamage(Bullet.currentDamage);
+        Debug.Log("Bullet is fired at current damage " + Bullet.currentDamage);
+        Debug.Log("Bullet is fired at instance damage " + Bullet.instanceDamage);
     }
 
     private void Update()

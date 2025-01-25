@@ -7,8 +7,10 @@ using UnityEngine.UIElements;
 public class Bullet : MonoBehaviour
 {
     private static float speed = 500.0f;
-    private static float damage = 50.0f;
-    public static float currentDamage = 15.0f;
+    private static float damage = 15.0f;
+    public static float currentDamage  =15.0f;
+
+    public static float instanceDamage;
         
     private Rigidbody2D rb;
 
@@ -16,8 +18,12 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+    }
+
+    private void Start()
+    {
         currentDamage = damage;
-        
     }
 
     private void FixedUpdate()
@@ -42,6 +48,11 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     
+    }
+
+    public void SetDamage(float damage)
+    {
+        instanceDamage = damage; // Assign damage to this instance
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
