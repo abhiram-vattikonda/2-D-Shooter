@@ -24,6 +24,10 @@ public class Player : MonoBehaviour
     private float maxHealth = 100f;
     public float currentMaxHealth;
     public float health;
+    public float regenRate = 0;
+
+    private float time;
+    public bool regenIsOn;
 
 
     private void Awake()
@@ -56,10 +60,20 @@ public class Player : MonoBehaviour
         PlayerMovement();
         PlayerShootDirection();
 
+        healthBar.UpdateHealth(health);
+
         if (health <= 0)
         {
             PauseMenu.Pause();
             tryAgainMenu.SetActive(true);
+        }
+
+        time += Time.deltaTime;
+
+        if (Mathf.FloorToInt(time % 60) > 1 && regenIsOn && health < 100)
+        {
+            health += regenRate;
+            time = 0f;
         }
 
     }
@@ -91,7 +105,7 @@ public class Player : MonoBehaviour
         {
             health -= walker.damage;
             walker.PlayerKnockBack(); // Should work but not working
-            healthBar.UpdateHealth(health);
+            //healthBar.UpdateHealth(health);
         }
 
     }

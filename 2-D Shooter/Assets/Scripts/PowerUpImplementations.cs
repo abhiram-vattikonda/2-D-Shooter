@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-public class PowerUpImplementations
+public class PowerUpImplementations 
 {
+
     public void Damage_Fire_implement(int stage)
     {
         if (stage == 0)
@@ -91,17 +94,18 @@ public class PowerUpImplementations
 
     public void Regen(int stage)
     {
+        Player.instance.regenIsOn = true;
         if (stage == 0)
         {
-            
+            Player.instance.regenRate = 1;
         }
         else if (stage == 1)
         {
-;
+            Player.instance.regenRate *= 1.5f;
         }
         else if (stage == 2)
         {
-
+            Player.instance.regenRate *= 2f;
         }
     }
 
