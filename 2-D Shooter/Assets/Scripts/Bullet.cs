@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class Bullet : MonoBehaviour
 {
     private static float speed = 500.0f;
-    private static float damage = 15.0f;
+    private static float damage = 50.0f;
     public static float currentDamage = 15.0f;
         
     private Rigidbody2D rb;

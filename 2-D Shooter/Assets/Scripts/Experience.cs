@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Experience : MonoBehaviour
 {
 
-    private int exp = 50;
+    private int exp = 100;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {

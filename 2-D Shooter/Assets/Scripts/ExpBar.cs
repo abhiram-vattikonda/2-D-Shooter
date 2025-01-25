@@ -22,7 +22,6 @@ public class ExpBar : MonoBehaviour
             Debug.Log("EXP MAX");
             SetMaxExp(slider.maxValue + 100);
             powerManager.PowerUpsMenu();
-
         }
     }
 

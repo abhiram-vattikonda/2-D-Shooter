@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class Powerup
 {
+
+    public static Powerup instance {  get; set; }
 
     public static upgrade[] upgrades = new upgrade[]
     {
@@ -16,8 +20,19 @@ public class Powerup
         new upgrade {name= "Regeneration", descriptions= new string[]{"Increase health: +1 hp/s", "Increase Regenration rate: +50%", "Increase Regeneration rate: +100%"}}
     };
 
-    public upgrade[] ChoosePowerUps()
+    
+    private void Start()
     {
+        if (instance == null)
+            instance = this;
+    }
+
+
+
+    public List<upgrade> ChoosePowerUps()
+    {
+        upgrade none = new upgrade {name = "NONE", descriptions = new string[]{ "no Powerups Left, This is zill", "no Powerups Left This is zill", "no Powerups Left This is zill" }, stages = 0 };
+
         List<upgrade> availableUpgrades = new List<upgrade> { };
         foreach (upgrade upgrade in upgrades)
         {
@@ -25,46 +40,54 @@ public class Powerup
             { availableUpgrades.Add(upgrade); }
         }
         ReShuffle(availableUpgrades);
+
+        while (availableUpgrades.Count < 3)
+        {
+            availableUpgrades.Add(none);
+        }
+        
         upgrade power1 = availableUpgrades[0];
         upgrade power2 = availableUpgrades[1];
         upgrade power3 = availableUpgrades[2];
-
-        return new upgrade[] { power1, power2, power3 };
+        return new List<Powerup.upgrade> { power1, power2, power3 };
     }
 
 
     public void UpgradeChosen(upgrade power)
     {
+        if (power.name == "NONE")   return;
+
         PowerUpImplementations p = new PowerUpImplementations();
 
 
-        PowerManager.buttonNotClicked = false;
+        PowerManager.instance.buttonNotClicked = false;
         Debug.Log(power.name + " Clicked " + power.stages);
 
         if (power.name == "Damage and fire rate")
         {
-            p.Damage_Fire_implement(power.stages);
+            //p.Damage_Fire_implement(power.stages);
         }
         if (power.name == "Movement Speed")
         {
-            p.Movement_Speed(power.stages);
+            //p.Movement_Speed(power.stages);
         }
         if (power.name == "Increase Size")
         {
-            p.Increase_Size(power.stages);
+           //p.Increase_Size(power.stages);
         }
         if (power.name == "Razor")
         {
-            p.Razor(power.stages);
+            //p.Razor(power.stages);
         }
         if (power.name == "Regeneration")
         {
-            p.Regen(power.stages);
+            //p.Regen(power.stages);
         }
 
         foreach (upgrade upgrade in upgrades)
         { if (upgrade.name == power.name) upgrade.stages++; }
 
+        PowerManager.instance.menuIsShowing = false;
         PauseMenu.Resume();
     }
 
