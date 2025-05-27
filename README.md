@@ -1,8 +1,8 @@
 # 🎮 2-D Shooter
 
-A fast-paced 2D shooter game developed in Unity. Engage in intense battles, eliminate enemies, and strive for the highest score!([GitHub][1], [GitHub][2])
+A fast-paced 2D shooter game developed in Unity. Engage in intense battles, eliminate enemies, and strive for the highest score!
 
-![Screenshot 2025-01-26 203217](https://github.com/user-attachments/assets/1981940b-c672-4602-b2f0-886d268a0005)
+![](https://github.com/user-attachments/assets/1981940b-c672-4602-b2f0-886d268a0005)
 
 ## 🚀 Features
 
