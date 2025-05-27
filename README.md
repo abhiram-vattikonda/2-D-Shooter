@@ -10,13 +10,12 @@ A fast-paced 2D shooter game developed in Unity. Engage in intense battles, elim
 * Diverse enemy types with unique behaviors
 * Power-ups and weapon upgrades
 * Challenging levels with increasing difficulty
-* Engaging sound effects and background music([GitHub][1])
+* Engaging sound effects and background music
 
 ## 🕹️ Controls
 
 * **Movement**: W / A / S / D or Arrow Keys
 * **Shoot**: Left Mouse Button
-* **Pause**: Escape Key([GitHub][3])
 
 ## 🛠️ Installation & Running the Game
 
@@ -36,7 +35,7 @@ A fast-paced 2D shooter game developed in Unity. Engage in intense battles, elim
 
    * Launch Unity Hub.
    * Click on "Add" and navigate to the cloned repository folder.
-   * Open the project.([GitHub][4])
+   * Open the project.
 
 3. **Play the Game**:
 
